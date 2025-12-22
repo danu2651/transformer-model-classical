@@ -21,19 +21,24 @@ Inside main `dh = DataHandler()` call the __init__ function of DataHandler class
         - **tokenizer_file**: Path to save trained tokenizer (data/tokenizer.json)
 
 2. **Tokenize**: 
+
 Using the object dh `dh.prepare_tensors()` call the prepare_tensors() inside DataHandler class:
-    prepare_tensors()
-    |
-     -> self.download_data() 
-       - Checks if input.txt already exists
-       - Downloads TinyShakespeare dataset (1.1 MB text, Shakespeare's works)
-       - Saves as UTF-8 text file
-     -> self.train_tokenizer()
+
+prepare_tensors()
+|
+--self.download_data() 
+    - Checks if input.txt already exists
+    - Downloads TinyShakespeare dataset (1.1 MB text, Shakespeare's works)
+    - Saves as UTF-8 text file
+
+--- self.train_tokenizer()
         |
          -> Step 1: Tokenizer Initialization
+
             ```
             Tokenizer(BPE(unk_token="[UNK]"))
             ```
+            
             - **Algorithm**: Byte-Pair Encoding (BPE) :- BPE is like learning vocabulary by merging frequent pairs. 
             - **Example**:
                 - Step 1: Start with letters (bytes)
