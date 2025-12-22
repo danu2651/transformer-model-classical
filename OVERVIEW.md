@@ -20,31 +20,29 @@ Inside main `dh = DataHandler()` call the __init__ function of DataHandler class
         - **input_file**: Path to raw text data (data/input.txt)
         - **tokenizer_file**: Path to save trained tokenizer (data/tokenizer.json)
 
-2. **Tokenize**: 
+2. **Tokenize**: Using the object dh `dh.prepare_tensors()` call the prepare_tensors() inside DataHandler class:
 
-Using the object dh `dh.prepare_tensors()` call the prepare_tensors() inside DataHandler class:
+    prepare_tensors()
+    |
+     - self.download_data() 
+       - Checks if input.txt already exists
+       - Downloads TinyShakespeare dataset (1.1 MB text, Shakespeare's works)
+       - Saves as UTF-8 text file
 
-prepare_tensors()
-|
---self.download_data() 
-    - Checks if input.txt already exists
-    - Downloads TinyShakespeare dataset (1.1 MB text, Shakespeare's works)
-    - Saves as UTF-8 text file
-
---- self.train_tokenizer()
+     - self.train_tokenizer()
         |
-         -> Step 1: Tokenizer Initialization
+         - Step 1: Tokenizer Initialization
 
-            ```
+            ```bash
             Tokenizer(BPE(unk_token="[UNK]"))
             ```
-            
             - **Algorithm**: Byte-Pair Encoding (BPE) :- BPE is like learning vocabulary by merging frequent pairs. 
             - **Example**:
                 - Step 1: Start with letters (bytes)
-                    ```
-                    Initial: l o w e r l o w e s t
-                    ```
+
+                ``` 
+                Initial: l o w e r l o w e s t 
+                ```
                 - Step 2: Find most frequent pair
                     ```
                     Pairs: lo(2), ow(2), we(1), er(1), r_(space)(1), _l(1), lo(again), etc.
