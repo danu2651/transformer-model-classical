@@ -78,8 +78,6 @@ python3 train.py
 After training, run evaluation on the held-out test set and generate text:
 
 ```bash
-python3 test.pyy
-``## Fork Practice
-This repository was forked and modified for GitHub forking practice.
-`
+python3 test.py
+
 ```
